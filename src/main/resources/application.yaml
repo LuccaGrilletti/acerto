@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: acerto
+  datasource:
+    url: jdbc:postgresql://localhost:5433/acerto
+    username: acerto
+    password: acerto_dev
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
