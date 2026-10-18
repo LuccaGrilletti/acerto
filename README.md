@@ -61,7 +61,7 @@ Decisions and their trade-offs are recorded in [`docs/adr`](docs/adr):
 - [x] `clients` migration
 - [x] `Client` entity with domain invariants
 - [x] Architecture decision records (0001 to 0004)
-- [ ] Unit tests for `Client`
+- [x] Unit tests for `Client`
 - [ ] Client repository, service and CRUD screens
 - [ ] Menu and orders (immutable once created)
 - [ ] Client account ledger and balance calculation
