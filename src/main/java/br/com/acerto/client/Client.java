@@ -42,8 +42,12 @@ public class Client {
     }
 
     public void update(String name, String phone) {
-        this.name = requireName(name);
-        this.phone = normalizePhone(phone);
+
+         String validName = requireName(name);
+         String nomalizedPhone = normalizePhone(phone);
+
+        this.name = validName;
+        this.phone = nomalizedPhone;
     }
 
     public void deactivate() {
