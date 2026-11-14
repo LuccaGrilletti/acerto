@@ -1,10 +1,10 @@
 package br.com.acerto.client;
 
 import lombok.RequiredArgsConstructor;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -17,6 +17,7 @@ public class ClientService {
     private static final String PHONE_CONSTRAINT = "uq_clients_phone";
 
     private final ClientRepository repository;
+
     @Transactional
     public Client register(String name, String phone) {
         return saveOrThrow(Client.create(name, phone));
