@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ClientTest {
+class ClientTest {
 
     @Test
     @DisplayName("Creates an active client with valid phone normalized to only digits")
@@ -46,7 +46,7 @@ public class ClientTest {
     }
 
     @Test
-    @DisplayName("Succesfully updates a client")
+    @DisplayName("Successfully updates a client")
     void updatesClient() {
         Client client = Client.create("John Doe", "+1 (23) 456-7890");
 
@@ -54,6 +54,18 @@ public class ClientTest {
 
         assertEquals("Kermit", client.getName());
         assertEquals("23454678910", client.getPhone());
+    }
+
+    @Test
+    @DisplayName("Keeps the previous data when an update is rejected")
+    void keepsPreviousDataWhenUpdateIsRejected() {
+        Client client = Client.create("John Doe", "+1 (23) 456-7890");
+
+        assertThrows(IllegalArgumentException.class,
+                () -> client.update("Kermit", "abc"));
+
+        assertEquals("John Doe", client.getName());
+        assertEquals("1234567890", client.getPhone());
     }
 
     @Test
@@ -71,6 +83,7 @@ public class ClientTest {
     void activatesClient() {
         Client client = Client.create("John Doe", "+1 (23) 456-7890");
 
+        client.deactivate();
         client.activate();
 
         assertTrue(client.isActive());
